@@ -1,0 +1,28 @@
+class Solution {
+    public int diagonalSum(int[][] mat) {
+        int primarysum=0;
+        int secondarysum=0;
+        if(mat.length==0 || mat.length==1){
+            return mat[0][0];
+        }
+        for(int i=0; i<mat.length; i++){
+            for(int j=0; j<mat.length; j++){
+                if(i==j){
+                    primarysum+=mat[i][j];
+                }
+                if(i+j==mat.length-1){
+                    secondarysum+=mat[i][j];
+                }
+            }
+        }
+        int sum=primarysum+secondarysum;
+        if(mat.length%2==0){
+            return sum;
+        }else{
+            int mid=(mat.length-1)/2;
+            int intermediateSum=mat[mid][mid];
+            return sum-intermediateSum;
+        }
+    }
+}
+//Time Complexity-O(N)
